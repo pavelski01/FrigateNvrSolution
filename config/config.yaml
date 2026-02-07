@@ -3,10 +3,6 @@ mqtt:
 
 cameras:
   N01:
-    detect:
-      width: 1280
-      height: 720
-      fps: 5
     ffmpeg:
       inputs:
         - path: rtsp://a:q@192.168.101.x:554/stream1
@@ -14,10 +10,6 @@ cameras:
             - detect
             - record
   S01:
-    detect:
-      width: 1280
-      height: 720
-      fps: 5
     ffmpeg:
       inputs:
         - path: rtsp://a:a@192.168.200.x:554/1
@@ -25,10 +17,6 @@ cameras:
             - detect
             - record
   S02:
-    detect:
-      width: 1280
-      height: 720
-      fps: 5
     ffmpeg:
       inputs:
         - path: rtsp://a:q@192.168.101.x:554/stream1
@@ -48,6 +36,7 @@ detect:
   enabled: true
   width: 1280
   height: 720
+  fps: 5
   min_initialized: 2
   max_disappeared: 25
   stationary:
