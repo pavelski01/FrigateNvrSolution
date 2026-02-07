@@ -9,7 +9,7 @@ cameras:
       fps: 5
     ffmpeg:
       inputs:
-        - path: rtsp://a:q12345@192.168.101.x:554/stream1
+        - path: rtsp://a:q@192.168.101.x:554/stream1
           roles:
             - detect
             - record
