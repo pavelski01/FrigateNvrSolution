@@ -1,12 +1,19 @@
 mqtt:
-  enabled: false
-
+  enabled: true
+  host: mosquitto
+  port: 1883
+  topic_prefix: frigate
+  client_id: frigate
+  user: admin
+  password: password
+  stats_interval: 60
+  qos: 0
 cameras:
   N01:
     enabled: true
     ffmpeg:
       inputs:
-        - path: rtsp://a:q@192.168.101.x:554/stream1
+        - path: rtsp://admin:qwerty12345@192.168.101.10:554/stream1
           roles:
             - detect
             - record
@@ -14,7 +21,7 @@ cameras:
     enabled: true
     ffmpeg:
       inputs:
-        - path: rtsp://a:a@192.168.200.x:554/1
+        - path: rtsp://admin:admin@192.168.200.10:554/1
           roles:
             - detect
             - record
@@ -22,7 +29,7 @@ cameras:
     enabled: true
     ffmpeg:
       inputs:
-        - path: rtsp://a:q@192.168.101.x:554/stream1
+        - path: rtsp://admin:qwerty12345@192.168.101.11:554/stream1
           roles:
             - detect
             - record

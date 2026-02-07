@@ -1,12 +1,42 @@
 services:
+  # Mosquitto MQTT Broker
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    restart: unless-stopped
+    stop_grace_period: 10s
+    privileged: true
+    ports:
+      - "1883:1883"  # MQTT
+      - "9001:9001"  # WebSocket
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - frigate-network
+  # Frigate NVR
   frigate:
     image: ghcr.io/blakeblackshear/frigate:stable
+    container_name: frigate
+    restart: unless-stopped
+    stop_grace_period: 10s
+    privileged: true
+    shm_size: "256mb"
+    depends_on:
+      - mosquitto
     ports:
-      - "8971:8971"
-      - "5000:5000" # Internal unauthenticated access. Expose carefully.
+      - "8971:8971" # Authenticated UI and API
+      - "5000:5000" # Unauthenticated UI and API
       - "8554:8554" # RTSP feeds
-      - "8555:8555/tcp" # WebRTC over tcp
-      - "8555:8555/udp" # WebRTC over udp
+      - "8555:8555/tcp" # WebRTC over TCP
+      - "8555:8555/udp" # WebRTC over UDP
     volumes:
-      - ./config:/config
-      - ./storage:/media/frigate
+      - ./frigate/config:/config
+      - ./frigate/storage:/media/frigate
+      - ./frigate/models:/config/model_cache
+    networks:
+      - frigate-network
+networks:
+  frigate-network:
+    driver: bridge
