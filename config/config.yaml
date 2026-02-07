@@ -76,6 +76,14 @@ motion:
   threshold: 30
   lightning_threshold: 0.8
   improve_contrast: true
+snapshots:
+  enabled: true
+  timestamp: true
+  bounding_box: true
+  crop: false
+  retain:
+    default: 10
+  quality: 100
 semantic_search:
   enabled: false
   model_size: small
