@@ -20,7 +20,7 @@ cameras:
       fps: 5
     ffmpeg:
       inputs:
-        - path: rtsp://a:a@192.168.200.x:554
+        - path: rtsp://a:a@192.168.200.x:554/1
           roles:
             - detect
             - record
@@ -35,6 +35,12 @@ cameras:
           roles:
             - detect
             - record
+objects:
+  track:
+    - person
+    - car
+    - dog
+    - cat
 detect:
   enabled: true
 record:
@@ -42,7 +48,6 @@ record:
   retain:
     days: 7
     mode: all
-version: 0.16-0
 semantic_search:
   enabled: false
   model_size: small
@@ -50,7 +55,8 @@ face_recognition:
   enabled: false
   model_size: small
 lpr:
-  enabled: false
+  enabled: true
 classification:
   bird:
     enabled: false
+version: 0.16-0
