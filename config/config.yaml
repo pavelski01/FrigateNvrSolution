@@ -39,10 +39,20 @@ objects:
   track:
     - person
     - car
+    - bicycle
+    - motorcycle
+    - bus
     - dog
     - cat
 detect:
   enabled: true
+  width: 1280
+  height: 720
+  min_initialized: 2
+  max_disappeared: 25
+  stationary:
+    interval: 50
+    threshold: 50
 record:
   enabled: true
   retain:
