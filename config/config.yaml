@@ -3,6 +3,7 @@ mqtt:
 
 cameras:
   N01:
+    enabled: true
     ffmpeg:
       inputs:
         - path: rtsp://a:q@192.168.101.x:554/stream1
@@ -10,6 +11,7 @@ cameras:
             - detect
             - record
   S01:
+    enabled: true
     ffmpeg:
       inputs:
         - path: rtsp://a:a@192.168.200.x:554/1
@@ -17,6 +19,7 @@ cameras:
             - detect
             - record
   S02:
+    enabled: true
     ffmpeg:
       inputs:
         - path: rtsp://a:q@192.168.101.x:554/stream1
