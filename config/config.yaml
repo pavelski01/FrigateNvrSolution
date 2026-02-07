@@ -50,11 +50,37 @@ record:
   retain:
     days: 7
     mode: all
+review:
+  alerts:
+    enabled: true
+    labels:
+      - person
+      - car
+      - bicycle
+      - motorcycle
+      - bus
+      - dog
+      - cat
+  detections:
+    enabled: true
+    labels:
+      - person
+      - car
+      - bicycle
+      - motorcycle
+      - bus
+      - dog
+      - cat
+motion:
+  enabled: true
+  threshold: 30
+  lightning_threshold: 0.8
+  improve_contrast: true
 semantic_search:
   enabled: false
   model_size: small
 face_recognition:
-  enabled: false
+  enabled: true
   model_size: small
 lpr:
   enabled: true
